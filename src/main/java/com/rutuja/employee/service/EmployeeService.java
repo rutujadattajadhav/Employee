@@ -4,6 +4,8 @@ import com.rutuja.employee.bean.Department;
 import com.rutuja.employee.bean.EmployeeResponce;
 import com.rutuja.employee.model.EmployeeModel;
 import com.rutuja.employee.repo.EmployeeRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -19,6 +21,8 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class EmployeeService {
+
+    Logger log = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -40,6 +44,7 @@ public class EmployeeService {
 
     public Mono<EmployeeResponce> getEmployeeById(Integer empId) throws Exception {
         if(employeeRepository.findById(empId).isPresent()) {
+            log.debug("Id is present ");
             EmployeeModel employeeModel = employeeRepository.findById(empId).get();
             EmployeeResponce employeeResponce = new EmployeeResponce();
             employeeResponce.setEmpId(employeeModel.getEmpId());
