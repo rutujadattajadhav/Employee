@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Address {
-    private Integer addressId;
+    private Integer addressId;//addressId
     private String  addressLine1;
     private String addressLine2;
     private StateBean state;
