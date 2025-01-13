@@ -13,16 +13,6 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
-//
-//    @Bean
-//    public MapReactiveUserDetailsService userDetailsService(){
-//         UserDetails user=User.withDefaultPasswordEncoder()
-//                .username("EmployeeRoot")
-//                .password("EmployeeRoot")
-//                .roles("EmployeeRoot")
-//                .build();
-//        return new MapReactiveUserDetailsService(user);
-//    }
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
